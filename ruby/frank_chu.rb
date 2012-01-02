@@ -3,18 +3,16 @@
 #this script generates a Frank Chu Sign 
 
 #set up the word banks
-Line1 = ['phillips', 'williamsburg', 'hilgendorf', 'cameron', 'cleverley', 'harrington', 'elmsford', 'waldman'] #Place name, small towns, strange sounding, light blue
+Line1 = ['phillips', 'crawley', 'williamsburg', 'plymouth', 'hilgendorf', 'telford', 'dudley,' 'cameron', 'cleverley', 'harrington', 'elmsford', 'waldman']
 
 Line2 = ['galaxies', 'populations', 'galaxies']
 
-Line3 = ['vesfrodrenical', 'whutrogrenikol', 'addikenical', 'psychrozenical', 'cesjrogrenical', 'kextokjnetul', 'shaxjrodrenikel', 'jretrostrenikal']
-Line3a = ['incarnations', 'octogenarian', 'adversity', 'dissensions', 'ergonomics', 'obsessions', 'forclosures', 'exhibitions']
+Line3 = ['incarnations', 'octogenarian', 'adversity', 'dissensions', 'ergonomics', 'obsessions', 'forclosures', 'exhibitions']
 
 Line4 = ['BBC', 'ABC', 'CNN', 'NBC', 'CBS', 'PBS', '20/20', 'FOX', 'global']
-Line4a = ['psychotechno', 'juxtagronikul', 'gutsprosenical', 'xoxphroxenigul', 'kastronoticul', 'sysfrofonical', 'thatrocenical']
-Line4b = ['podcasts', 'coverage', 'netcasts', 'broadcasts', 'content']
+Line4a = ['podcasts', 'coverage', 'netcasts', 'broadcasts', 'content', 'spaceports', 'civilians', '']
 
-Line5 = ['trykrowronikul', 'kisprogenical', 'ovolutions eperational', 'zagocenikul', 'guskoketical', 'whetrosenikul', 'wisgrovenikul', 'kisprogenical', 'phixgrostrenikul']
+Line5 = ['']
 
 Line6 = ['apertures', 'lucritive', 'miniscule','epitomized', 'statutory', 'nascent', 'parochial']
 Line6a = ['ultracompacts', 'partisans', 'admonishments', 'incentives', 'syncing', 'reticence', 'astro-physicists', 'libertarians']
@@ -23,7 +21,9 @@ Line7 = ['awetrocenial', 'moratoriums', 'stratospherical',  'agrithenical', 'tet
 
 lines = [ Line1, Line2, Line3, Line4, Line5, Line6, Line7 ]
 
-#set up the text and background color
+
+  
+#set up the text and background colors
 def chucolor(text, color_code)
   "\e[1;#{color_code};40m#{text}\e[0m"
 end
@@ -40,6 +40,15 @@ def pick(array)
   array[rand(array.length)].upcase
 end
 
+#chu-ism generator
+def chuism()
+  prefix = ['ves', 'whu', 'add', 'psy', 'ces', 'shax', 'kex', 'jre', 'za', 'jux', 'guts', 'xox', 'kas', 'tha', 'wis', 'kis', 'gus']
+  fix = ['for', 'tro', 'cro', 'jro', 'to', 'go', 'ta', 'pro', 'phro', 'tro', 'gro']
+  midfix = ['dren', 'gren', 'ken', 'zen', 'jn', 'stren', 'gron', 'sen', 'xen', 'not', 'cen', 'ven' 'bren']
+  suffix = [ 'ikul', 'ical', 'icul', 'ikol', 'ikel', 'etul', 'ikal']
+  return  pick(prefix) + pick(fix) + pick(midfix) + pick(suffix)
+end
+
 #constructs each line of the sign according to observed patterns
 def build_line(array)
   line = pick(array)
@@ -49,15 +58,19 @@ def build_line(array)
       return white(output)
     end
     if(array == Line3)
-      output = line + ' ' + pick(Line3a)
+      output = chuism() + ' ' + line
       return green(output)
     end
     if(array == Line4)
-      output = line + ' : ' + pick(Line4a) + ' ' + pick(Line4b)
+      output = line + ' : ' + chuism() + ' ' + pick(Line4a)
       color = rand(3)
       if(color == 0); return red(output); end
       if(color == 1); return cyan(output); end
       if(color == 2); return magenta(output); end
+    end
+    if(array == Line5)
+      output = chuism()
+      return white(output)
     end
     if(array == Line6)
       i = rand(3)
@@ -69,7 +82,7 @@ def build_line(array)
       if(color == 1); return blue(output); end
       if(color == 2); return green(output); end
     end   
-    if(array == Line5 || Line7) ; return white(line); end
+    if(array == Line7) ; return white(line); end
 end
 
 #pushes each array through the grinder and outputs the sign
