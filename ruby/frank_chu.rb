@@ -3,7 +3,7 @@
 #this script generates a Frank Chu Sign 
 
 #set up the word banks
-Line1 = ['phillips', 'crawley', 'williamsburg', 'plymouth', 'hilgendorf', 'telford', 'dudley,' 'cameron', 'cleverley', 'harrington', 'elmsford', 'waldman']
+Line1 = ['phillips', 'crawley', 'williamsburg', 'plymouth', 'hilgendorf', 'telford', 'dudley', 'cameron', 'cleverley', 'harrington', 'elmsford', 'waldman']
 
 Line2 = ['galaxies', 'populations', 'galaxies']
 
@@ -24,16 +24,16 @@ lines = [ Line1, Line2, Line3, Line4, Line5, Line6, Line7 ]
 
   
 #set up the text and background colors
-def chucolor(text, color_code)
+def colorize(text, color_code)
   "\e[1;#{color_code};40m#{text}\e[0m"
 end
 
-def red(text); chucolor(text, 31); end
-def green(text); chucolor(text, 32); end
-def blue(text); chucolor(text, 34); end
-def magenta(text); chucolor(text, 35); end
-def cyan(text); chucolor(text, 36); end
-def white(text); chucolor(text,37); end
+def red(text); colorize(text, 31); end
+def green(text); colorize(text, 32); end
+def blue(text); colorize(text, 34); end
+def magenta(text); colorize(text, 35); end
+def cyan(text); colorize(text, 36); end
+def white(text); colorize(text,37); end
 
 #select one element from an array and format it
 def pick(array)
