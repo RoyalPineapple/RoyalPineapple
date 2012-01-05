@@ -44,19 +44,60 @@
 
 
 - (void)buildLines{
+//1
     line1.text = [[self pickFromArray:line1array]uppercaseString];
     line1.textColor = [UIColor cyanColor];
-    
+//1    
     line2.text = [[NSString stringWithFormat:@"%d,000,000,000 %@", rand() %1000,[self pickFromArray:line2array]]uppercaseString];
     line2.textColor = [UIColor whiteColor];
-    
+//3    
     line3.text = [[NSString stringWithFormat:@"%@ %@", [self chuism], [self pickFromArray:line3array]]uppercaseString];
     line3.textColor = [UIColor greenColor];
-    
-    
-
+//4    
+    line4.text = [[NSString stringWithFormat:@"%@ : %@ %@",[self pickFromArray:line4array],[self chuism], [self pickFromArray:line4brray]]uppercaseString];
+    int line4color = arc4random() % 3;
+    if(line4color == 0)line4.textColor = [UIColor redColor]; 
+    if(line4color == 1)line4.textColor = [UIColor cyanColor]; 
+    if(line4color == 2)line4.textColor = [UIColor magentaColor]; 
+//5
+    line5.text = [[self chuism]uppercaseString];
+    line5.textColor = [UIColor whiteColor];
+//6 
+    int line6display = arc4random() % 3;
+    int line6color = arc4random() % 3;
+    if(line6display == 0){
+    line6.text = [[NSString stringWithFormat:@"%@ %@",
+                  [self pickFromArray:line6array], [self pickFromArray:line6brray]]uppercaseString];
+    }
+    if(line6display == 1){
+        line6.text = [[NSString stringWithFormat:@"%@ %@",
+                       [self pickFromArray:line6brray], [self pickFromArray:line6array]]uppercaseString];
+    }
+    if(line6display == 2){
+        line6.text = [[self pickFromArray:line6array]uppercaseString];   
+    }
+    if(line6color == 0)line6.textColor = [UIColor redColor]; 
+    if(line6color == 1)line6.textColor = [UIColor blueColor]; 
+    if(line6color == 2)line6.textColor = [UIColor greenColor];
+//7
+    line7.text = [[self pickFromArray:line7array]uppercaseString];
+    line7.textColor = [UIColor whiteColor];
 }
 
+#pragma mark - Shaking Support
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
+    if (event.subtype == UIEventSubtypeMotionShake){
+        [self buildLines];
+    }
+    
+    if ([super respondsToSelector:@selector(motionEnded:withEvent:)]) {
+        [super motionEnded:motion withEvent:event];
+    }
+}
+
+- (BOOL)canBecomeFirstResponder{
+    return YES;
+}
 
 #pragma mark - View lifecycle
 
@@ -82,13 +123,7 @@
     
     line7array = [NSArray arrayWithObjects: @"awetrocenial", @"moratoriums", @"stratospherical",  @"agrithenical", @"tetrafluoride", @"apologetics", @"astrocenial", @"pedophiles", @"biostatisticians", @"epitomes", nil];
         
-
     [self buildLines];
-        
-
-/*  NSArray *lines = [NSArray arrayWithObjects:line1array,line2array,line3array,line4array,line5array,line6array,line7array,nil];
-*/
-                          
 }
 
 
@@ -111,6 +146,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [self becomeFirstResponder];
     [super viewWillAppear:animated];
 }
 
@@ -121,6 +157,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [self resignFirstResponder];
 	[super viewWillDisappear:animated];
 }
 
@@ -133,7 +170,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return YES; //(interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
 #pragma mark - Flipside View
@@ -141,6 +178,7 @@
 - (void)flipsideViewControllerDidFinish:(FlipsideViewController *)controller
 {
     [self dismissModalViewControllerAnimated:YES];
+    //[self buildLines];
 }
 
 - (IBAction)showInfo:(id)sender

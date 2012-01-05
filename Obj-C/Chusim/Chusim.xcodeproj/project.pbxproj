@@ -18,6 +18,7 @@
 		FA83874614B3DD3700107A9D /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA83874414B3DD3700107A9D /* MainViewController.xib */; };
 		FA83874914B3DD3700107A9D /* FlipsideViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA83874714B3DD3700107A9D /* FlipsideViewController.xib */; };
 		FA83875C14B3E78500107A9D /* frank.png in Resources */ = {isa = PBXBuildFile; fileRef = FA83875B14B3E78500107A9D /* frank.png */; };
+		FAB20D4B14B5285900131688 /* laughing_squid_iphone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FAB20D4A14B5285900131688 /* laughing_squid_iphone.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		FA83874514B3DD3700107A9D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainViewController.xib; sourceTree = "<group>"; };
 		FA83874814B3DD3700107A9D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FlipsideViewController.xib; sourceTree = "<group>"; };
 		FA83875B14B3E78500107A9D /* frank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frank.png; sourceTree = "<group>"; };
+		FAB20D4A14B5285900131688 /* laughing_squid_iphone.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = laughing_squid_iphone.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				FA83875B14B3E78500107A9D /* frank.png */,
+				FAB20D4A14B5285900131688 /* laughing_squid_iphone.jpg */,
 				FA83873214B3DD3700107A9D /* Chusim */,
 				FA83872B14B3DD3700107A9D /* Frameworks */,
 				FA83872914B3DD3700107A9D /* Products */,
@@ -160,6 +163,7 @@
 				FA83874614B3DD3700107A9D /* MainViewController.xib in Resources */,
 				FA83874914B3DD3700107A9D /* FlipsideViewController.xib in Resources */,
 				FA83875C14B3E78500107A9D /* frank.png in Resources */,
+				FAB20D4B14B5285900131688 /* laughing_squid_iphone.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +297,7 @@
 				FA83874E14B3DD3700107A9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
