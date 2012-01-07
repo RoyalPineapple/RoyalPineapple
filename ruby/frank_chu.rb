@@ -54,7 +54,7 @@ def build_line(array)
   line = pick(array)
     if(array == Line1); return cyan(line); end
     if(array == Line2)
-      output = rand(1000).to_s + "0000000 " + line
+      output = rand(1000).to_s + ",000,000,000,000,000 " + line
       return white(output)
     end
     if(array == Line3)
