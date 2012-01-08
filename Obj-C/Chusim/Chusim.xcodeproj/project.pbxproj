@@ -137,6 +137,9 @@
 /* Begin PBXProject section */
 		FA83871F14B3DD3700107A9D /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = FA83872214B3DD3700107A9D /* Build configuration list for PBXProject "Chusim" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;

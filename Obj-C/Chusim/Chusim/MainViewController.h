@@ -7,6 +7,9 @@
 //
 
 #import "FlipsideViewController.h"
+#import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+
 
 @interface MainViewController : UIViewController <FlipsideViewControllerDelegate> {
     UILabel *line1;
@@ -28,6 +31,7 @@
     NSArray *line7array;
     NSArray *lines;
 
+
 }
 
 
@@ -43,4 +47,6 @@
 - (NSString *)chuism;
 - (id)pickFromArray:(NSArray *)array;
 - (void)buildLines;
+- (void)shakeAnimation:(id)sender;
+
 @end

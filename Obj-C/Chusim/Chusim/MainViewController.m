@@ -47,21 +47,30 @@
 //1
     line1.text = [[self pickFromArray:line1array]uppercaseString];
     line1.textColor = [UIColor cyanColor];
+    [self shakeAnimation:line1];
 //1    
     line2.text = [[NSString stringWithFormat:@"%d,000,000,000 %@", rand() %1000,[self pickFromArray:line2array]]uppercaseString];
     line2.textColor = [UIColor whiteColor];
+    [self shakeAnimation:line2];
+
 //3    
     line3.text = [[NSString stringWithFormat:@"%@ %@", [self chuism], [self pickFromArray:line3array]]uppercaseString];
     line3.textColor = [UIColor greenColor];
+    [self shakeAnimation:line3];
+
 //4    
     line4.text = [[NSString stringWithFormat:@"%@ : %@ %@",[self pickFromArray:line4array],[self chuism], [self pickFromArray:line4brray]]uppercaseString];
     int line4color = arc4random() % 3;
     if(line4color == 0)line4.textColor = [UIColor redColor]; 
     if(line4color == 1)line4.textColor = [UIColor cyanColor]; 
     if(line4color == 2)line4.textColor = [UIColor magentaColor]; 
+    [self shakeAnimation:line4];
+
 //5
     line5.text = [[self chuism]uppercaseString];
     line5.textColor = [UIColor whiteColor];
+    [self shakeAnimation:line5];
+
 //6 
     int line6display = arc4random() % 3;
     int line6color = arc4random() % 3;
@@ -79,10 +88,44 @@
     if(line6color == 0)line6.textColor = [UIColor redColor]; 
     if(line6color == 1)line6.textColor = [UIColor blueColor]; 
     if(line6color == 2)line6.textColor = [UIColor greenColor];
+    [self shakeAnimation:line6];
+
 //7
     line7.text = [[self pickFromArray:line7array]uppercaseString];
     line7.textColor = [UIColor whiteColor];
+    [self shakeAnimation:line7];
+
 }
+#pragma Animations
+//Shakes the text field saying no
+- (void)shakeAnimation:(id)sender {
+    UIView *senderView = (UIView*)sender;
+    CABasicAnimation *shakeyAnimation =[CABasicAnimation animationWithKeyPath:@"position"];
+    shakeyAnimation.duration = 0.05;
+    shakeyAnimation.repeatCount = 2;
+    shakeyAnimation.autoreverses=YES;
+    shakeyAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(175.0,83.5)];
+    shakeyAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(140.0,83.5)];
+    shakeyAnimation.delegate = self;
+    
+    [senderView.layer addAnimation:shakeyAnimation forKey:@"animateLayer"];
+    
+}
+/*
+-(void)buttonAnimation:(id)sender{
+    CALayer *theLayer = [line1 layer];
+    CABasicAnimation *buttonAnimation =[CABasicAnimation animationWithKeyPath:@"transform"];
+    buttonAnimation.duration = 0.125;
+    buttonAnimation.repeatCount = 0;
+    buttonAnimation.autoreverses = NO;
+    buttonAnimation.removedOnCompletion = NO;
+    buttonAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.1, 1.1, 1.0)];
+    [theLayer addAnimation:buttonAnimation forKey:nil];
+    
+}
+//- (void)animationDidStop:(CAAnimation*)animation finished:(BOOL)flag{}
+*/
+
 
 #pragma mark - Shaking Support
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
