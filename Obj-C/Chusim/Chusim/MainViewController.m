@@ -7,6 +7,7 @@
 //
 
 #import "MainViewController.h"
+#import "ChusimAppDelegate.h"
 
 @implementation MainViewController
 @synthesize line1;
@@ -101,6 +102,7 @@
 
 //Shakes the text field saying no
 - (void)shakeLabel:(UILabel *)sender
+          byAmount:(int)distance
          forLength:(double)length {
     UIView *senderView = (UIView*)sender;
     CABasicAnimation *shakeyAnimation =[CABasicAnimation animationWithKeyPath:@"position"];
@@ -110,8 +112,8 @@
     shakeyAnimation.autoreverses = YES;
     CGFloat from = sender.center.x;
     CGFloat to = from;
-    from = from - 10;
-    to = to + 10;
+    from = from - distance;
+    to = to + distance;
     shakeyAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(from, sender.center.y)];
     shakeyAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(to, sender.center.y)];
     shakeyAnimation.delegate = self;
@@ -125,7 +127,8 @@
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
     if (event.subtype == UIEventSubtypeMotionShake){
         for(UILabel *line in lines){
-            [self shakeLabel:line forLength:0.05];
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)[self shakeLabel:line byAmount:20 forLength:0.075];
+           else [self shakeLabel:line byAmount:10 forLength:0.05];
         }
         [self buildLines];
     }
@@ -165,9 +168,12 @@
     
     lines = [NSArray arrayWithObjects:line1, line2, line3, line4, line5, line6, line7, nil];
     
-    //shake everything really quickly to get it lined up pretty
+    //shake everything really quickly to get it lined up pretty, also set up the font
     for(UILabel *line in lines){
-        [self shakeLabel:line forLength:.0001];
+        [self shakeLabel:line byAmount:0 forLength:.0001];
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) line.font =[UIFont fontWithName:@"Impact" size:50];
+        else line.font = [UIFont fontWithName:@"Impact" size:26];
+        
     }
     
     [self buildLines];
@@ -230,10 +236,19 @@
 
 - (IBAction)showInfo:(id)sender
 {    
-    FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideViewController" bundle:nil];
-    controller.delegate = self;
-    controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    [self presentModalViewController:controller animated:YES];
+     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideiPadViewController" bundle:nil];
+        controller.delegate = self;
+        controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        [self presentModalViewController:controller animated:YES];
+    }
+    else {
+        FlipsideViewController *controller = [[FlipsideViewController alloc] initWithNibName:@"FlipsideViewController" bundle:nil];
+        controller.delegate = self;
+        controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        [self presentModalViewController:controller animated:YES];
+
+    }
 }
 
 @end

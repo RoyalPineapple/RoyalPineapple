@@ -48,6 +48,7 @@
 - (id)pickFromArray:(NSArray *)array;
 - (void)buildLines;
 - (void)shakeLabel:(UILabel *)sender
+          byAmount:(int)distance
          forLength:(double)length;
 - (void)centerLabel:(UILabel *)sender;
 @end
