@@ -1,3 +1,4 @@
-*.xcworkspace
+*project.xcworkspace*
+*xcuserdata*
 *.xcuserstate
 .DS_Store
