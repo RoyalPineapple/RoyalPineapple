@@ -11,6 +11,8 @@
 		AC1616A514BA81CD00C2BDB2 /* FlipsideiPadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1616A414BA81CD00C2BDB2 /* FlipsideiPadViewController.xib */; };
 		AC1616A714BA86E300C2BDB2 /* ls-logo-20110903-222944.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AC1616A614BA86E300C2BDB2 /* ls-logo-20110903-222944.jpg */; };
 		ACF1E37414BA8D630061E39B /* Impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACF1E37314BA8D630061E39B /* Impact.ttf */; };
+		ACF1E37614BA9D8F0061E39B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = ACF1E37514BA9D8F0061E39B /* Default.png */; };
+		ACF1E37814BAA0DE0061E39B /* Words.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACF1E37714BAA0DE0061E39B /* Words.plist */; };
 		ACF5AB2A14BA471A006CDC4F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF5AB2914BA471A006CDC4F /* QuartzCore.framework */; };
 		FA83872D14B3DD3700107A9D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA83872C14B3DD3700107A9D /* UIKit.framework */; };
 		FA83872F14B3DD3700107A9D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA83872E14B3DD3700107A9D /* Foundation.framework */; };
@@ -31,6 +33,8 @@
 		AC1616A414BA81CD00C2BDB2 /* FlipsideiPadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FlipsideiPadViewController.xib; sourceTree = "<group>"; };
 		AC1616A614BA86E300C2BDB2 /* ls-logo-20110903-222944.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = "ls-logo-20110903-222944.jpg"; path = "../../../../../../Library/Caches/TemporaryItems/ls-logo-20110903-222944.jpg"; sourceTree = "<group>"; };
 		ACF1E37314BA8D630061E39B /* Impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Impact.ttf; sourceTree = "<group>"; };
+		ACF1E37514BA9D8F0061E39B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		ACF1E37714BAA0DE0061E39B /* Words.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Words.plist; sourceTree = "<group>"; };
 		ACF5AB2914BA471A006CDC4F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FA83872814B3DD3700107A9D /* Chusim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chusim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA83872C14B3DD3700107A9D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -81,6 +85,7 @@
 		FA83871D14B3DD3700107A9D = {
 			isa = PBXGroup;
 			children = (
+				ACF1E37514BA9D8F0061E39B /* Default.png */,
 				ACF5AB2914BA471A006CDC4F /* QuartzCore.framework */,
 				FA83873214B3DD3700107A9D /* Chusim */,
 				FA83872B14B3DD3700107A9D /* Frameworks */,
@@ -109,17 +114,18 @@
 		FA83873214B3DD3700107A9D /* Chusim */ = {
 			isa = PBXGroup;
 			children = (
-				ACF1E37214BA8D630061E39B /* Resources */,
 				FA83873B14B3DD3700107A9D /* ChusimAppDelegate.h */,
 				FA83873C14B3DD3700107A9D /* ChusimAppDelegate.m */,
 				FA83873E14B3DD3700107A9D /* MainViewController.h */,
 				FA83873F14B3DD3700107A9D /* MainViewController.m */,
+				ACF1E37714BAA0DE0061E39B /* Words.plist */,
 				FA83874114B3DD3700107A9D /* FlipsideViewController.h */,
 				FA83874214B3DD3700107A9D /* FlipsideViewController.m */,
 				FA83874414B3DD3700107A9D /* MainViewController.xib */,
 				AC1616A114BA6B7000C2BDB2 /* MainiPadViewController.xib */,
 				FA83874714B3DD3700107A9D /* FlipsideViewController.xib */,
 				AC1616A414BA81CD00C2BDB2 /* FlipsideiPadViewController.xib */,
+				ACF1E37214BA8D630061E39B /* Resources */,
 				FA83873314B3DD3700107A9D /* Supporting Files */,
 			);
 			path = Chusim;
@@ -195,6 +201,8 @@
 				AC1616A514BA81CD00C2BDB2 /* FlipsideiPadViewController.xib in Resources */,
 				AC1616A714BA86E300C2BDB2 /* ls-logo-20110903-222944.jpg in Resources */,
 				ACF1E37414BA8D630061E39B /* Impact.ttf in Resources */,
+				ACF1E37614BA9D8F0061E39B /* Default.png in Resources */,
+				ACF1E37814BAA0DE0061E39B /* Words.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

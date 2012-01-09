@@ -147,32 +147,27 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	// Import the data
+    NSString *file = [[NSBundle mainBundle] pathForResource:@"Words" ofType:@"plist"];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:file];
     
-    //setup the word banks
-    line1array = [NSArray arrayWithObjects:@"phillips", @"crawley", @"williamsburg", @"plymouth", @"hilgendorf", @"telford", @"dudley", @"cameron", @"cleverley", @"harrington", @"elmsford", @"waldman", nil];
-    
-    line2array = [NSArray arrayWithObjects:@"galaxies",@"populations",@"galaxies", nil];
-    
-    line3array = [NSArray arrayWithObjects: @"incarnations", @"octogenarian", @"adversity", @"dissensions", @"ergonomics", @"obsessions", @"forclosures", @"exhibitions", nil];
-    
-    line4array = [NSArray arrayWithObjects: @"BBC", @"ABC", @"CNN", @"NBC", @"CBS", @"PBS", @"20/20", @"FOX", @"global", nil];
-    line4brray = [NSArray arrayWithObjects: @"podcasts", @"coverage", @"netcasts", @"broadcasts", @"content", @"spaceports", @"civilians", @"", nil];
-    
-    line5array = [NSArray arrayWithObject:@""];
-    
-    line6array = [NSArray arrayWithObjects:@"apertures",  @"lucritive", @"miniscule", @"epitomized", @"statutory", @"nascent", @"parochial", nil];
-    line6brray = [NSArray arrayWithObjects:@"ultracompacts", @"partisans", @"admonishments", @"incentives", @"syncing",@"reticence", @"astro-physicists", @"libertarians", nil];
-    
-    line7array = [NSArray arrayWithObjects: @"awetrocenial", @"moratoriums", @"stratospherical",  @"agrithenical", @"tetrafluoride", @"apologetics", @"astrocenial", @"pedophiles", @"biostatisticians", @"epitomes", nil];
-    
+    //setup the line arrays
+    line1array = [dict objectForKey:@"line1"];
+    line2array = [dict objectForKey:@"line2"];
+    line3array = [dict objectForKey:@"line3"];
+    line4array = [dict objectForKey:@"line4"];
+    line4brray = [dict objectForKey:@"line4b"];
+    line6array = [dict objectForKey:@"line6"];
+    line6brray = [dict objectForKey:@"line6b"];    
+    line7array = [dict objectForKey:@"line7"];
+
     lines = [NSArray arrayWithObjects:line1, line2, line3, line4, line5, line6, line7, nil];
     
-    //shake everything really quickly to get it lined up pretty, also set up the font
+    //animate everything really quickly to get it lined up pretty, also set up the font
     for(UILabel *line in lines){
         [self shakeLabel:line byAmount:0 forLength:.0001];
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) line.font =[UIFont fontWithName:@"Impact" size:50];
-        else line.font = [UIFont fontWithName:@"Impact" size:26];
+        else line.font = [UIFont fontWithName:@"Impact" size:25];
         
     }
     
