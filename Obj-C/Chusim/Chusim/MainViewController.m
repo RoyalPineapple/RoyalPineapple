@@ -119,20 +119,6 @@
     [senderView.layer addAnimation:shakeyAnimation forKey:@"animateLayer"];
     
 }
-/*
--(void)buttonAnimation:(id)sender{
-    CALayer *theLayer = [line1 layer];
-    CABasicAnimation *buttonAnimation =[CABasicAnimation animationWithKeyPath:@"transform"];
-    buttonAnimation.duration = 0.125;
-    buttonAnimation.repeatCount = 0;
-    buttonAnimation.autoreverses = NO;
-    buttonAnimation.removedOnCompletion = NO;
-    buttonAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.1, 1.1, 1.0)];
-    [theLayer addAnimation:buttonAnimation forKey:nil];
-    
-}
-//- (void)animationDidStop:(CAAnimation*)animation finished:(BOOL)flag{}
-*/
 
 
 #pragma mark - Shaking Support
