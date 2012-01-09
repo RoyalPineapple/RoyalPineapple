@@ -47,6 +47,7 @@
 - (NSString *)chuism;
 - (id)pickFromArray:(NSArray *)array;
 - (void)buildLines;
-- (void)shakeAnimation:(id)sender;
-
+- (void)shakeLabel:(UILabel *)sender
+         forLength:(double)length;
+- (void)centerLabel:(UILabel *)sender;
 @end

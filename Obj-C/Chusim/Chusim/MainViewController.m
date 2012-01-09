@@ -47,16 +47,13 @@
 //1
     line1.text = [[self pickFromArray:line1array]uppercaseString];
     line1.textColor = [UIColor cyanColor];
-    [self shakeAnimation:line1];
 //1    
     line2.text = [[NSString stringWithFormat:@"%d,000,000,000 %@", rand() %1000,[self pickFromArray:line2array]]uppercaseString];
     line2.textColor = [UIColor whiteColor];
-    [self shakeAnimation:line2];
 
 //3    
     line3.text = [[NSString stringWithFormat:@"%@ %@", [self chuism], [self pickFromArray:line3array]]uppercaseString];
     line3.textColor = [UIColor greenColor];
-    [self shakeAnimation:line3];
 
 //4    
     line4.text = [[NSString stringWithFormat:@"%@ : %@ %@",[self pickFromArray:line4array],[self chuism], [self pickFromArray:line4brray]]uppercaseString];
@@ -64,12 +61,10 @@
     if(line4color == 0)line4.textColor = [UIColor redColor]; 
     if(line4color == 1)line4.textColor = [UIColor cyanColor]; 
     if(line4color == 2)line4.textColor = [UIColor magentaColor]; 
-    [self shakeAnimation:line4];
 
 //5
     line5.text = [[self chuism]uppercaseString];
     line5.textColor = [UIColor whiteColor];
-    [self shakeAnimation:line5];
 
 //6 
     int line6display = arc4random() % 3;
@@ -88,24 +83,37 @@
     if(line6color == 0)line6.textColor = [UIColor redColor]; 
     if(line6color == 1)line6.textColor = [UIColor blueColor]; 
     if(line6color == 2)line6.textColor = [UIColor greenColor];
-    [self shakeAnimation:line6];
 
 //7
     line7.text = [[self pickFromArray:line7array]uppercaseString];
     line7.textColor = [UIColor whiteColor];
-    [self shakeAnimation:line7];
+    
+   
+
 
 }
 #pragma Animations
+- (void)centerLabel:(UILabel *)sender{
+    CGFloat from = sender.center.x;
+    sender.center = CGPointMake(from, sender.center.y);
+}
+
+
 //Shakes the text field saying no
-- (void)shakeAnimation:(id)sender {
+- (void)shakeLabel:(UILabel *)sender
+         forLength:(double)length {
     UIView *senderView = (UIView*)sender;
     CABasicAnimation *shakeyAnimation =[CABasicAnimation animationWithKeyPath:@"position"];
-    shakeyAnimation.duration = 0.05;
+    CFTimeInterval time = length;
+    shakeyAnimation.duration = time;
     shakeyAnimation.repeatCount = 2;
-    shakeyAnimation.autoreverses=YES;
-    shakeyAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(175.0,83.5)];
-    shakeyAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(140.0,83.5)];
+    shakeyAnimation.autoreverses = YES;
+    CGFloat from = sender.center.x;
+    CGFloat to = from;
+    from = from - 10;
+    to = to + 10;
+    shakeyAnimation.fromValue = [NSValue valueWithCGPoint:CGPointMake(from, sender.center.y)];
+    shakeyAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(to, sender.center.y)];
     shakeyAnimation.delegate = self;
     
     [senderView.layer addAnimation:shakeyAnimation forKey:@"animateLayer"];
@@ -130,6 +138,9 @@
 #pragma mark - Shaking Support
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event{
     if (event.subtype == UIEventSubtypeMotionShake){
+        for(UILabel *line in lines){
+            [self shakeLabel:line forLength:0.05];
+        }
         [self buildLines];
     }
     
@@ -165,7 +176,14 @@
     line6brray = [NSArray arrayWithObjects:@"ultracompacts", @"partisans", @"admonishments", @"incentives", @"syncing",@"reticence", @"astro-physicists", @"libertarians", nil];
     
     line7array = [NSArray arrayWithObjects: @"awetrocenial", @"moratoriums", @"stratospherical",  @"agrithenical", @"tetrafluoride", @"apologetics", @"astrocenial", @"pedophiles", @"biostatisticians", @"epitomes", nil];
-        
+    
+    lines = [NSArray arrayWithObjects:line1, line2, line3, line4, line5, line6, line7, nil];
+    
+    //shake everything really quickly to get it lined up pretty
+    for(UILabel *line in lines){
+        [self shakeLabel:line forLength:.0001];
+    }
+    
     [self buildLines];
 }
 
@@ -213,7 +231,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return YES; //(interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
 #pragma mark - Flipside View
